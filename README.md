@@ -1,3 +1,4 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/SonicRoshan/falcon)](https://goreportcard.com/report/github.com/SonicRoshan/falcon)
 # Falcon
 Minimal And Efficient Error Handling In Go
 
