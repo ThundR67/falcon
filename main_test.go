@@ -24,16 +24,18 @@ func TestErrHandler(t *testing.T) {
 	assert.NotNil(errHandler)
 	assert.IsType(&ErrorHandler{}, errHandler)
 
-	errHandler.AddHandler(func(err error, data ...interface{}) {
+	errHandler.AddHandler(func(err error, data ...interface{}) interface{} {
 		defaultErrOccured = true
 		dataPassed = data != nil
+		return true
 	})
-	errHandler.AddHandler(func(err error, data ...interface{}) {
+	errHandler.AddHandler(func(err error, data ...interface{}) interface{} {
 		customErrOccured = true
+		return true
 	}, customErr{})
 
-	errHandler.Check(errors.New("test"), "test")
-	errHandler.Check(customErr{})
+	assert.True(errHandler.Check(errors.New("test"), "test").(bool))
+	assert.True(errHandler.Check(customErr{}).(bool))
 
 	assert.True(defaultErrOccured)
 	assert.True(customErrOccured)

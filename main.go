@@ -13,17 +13,17 @@ func NewErrorHandler() *ErrorHandler {
 
 //ErrorHandler will error handle
 type ErrorHandler struct {
-	handlers       map[reflect.Type]func(error, ...interface{})
-	defaultHandler func(error, ...interface{})
+	handlers       map[reflect.Type]func(error, ...interface{}) interface{}
+	defaultHandler func(error, ...interface{}) interface{}
 }
 
 //Init Initializes
 func (errorHandler *ErrorHandler) Init() {
-	errorHandler.handlers = map[reflect.Type]func(error, ...interface{}){}
+	errorHandler.handlers = map[reflect.Type](func(error, ...interface{}) interface{}){}
 }
 
 //AddHandler adds a new error handler
-func (errorHandler *ErrorHandler) AddHandler(handleFunc func(error, ...interface{}),
+func (errorHandler *ErrorHandler) AddHandler(handleFunc func(error, ...interface{}) interface{},
 	errTypes ...interface{}) {
 
 	if errTypes == nil {
@@ -35,15 +35,14 @@ func (errorHandler *ErrorHandler) AddHandler(handleFunc func(error, ...interface
 }
 
 //Check checks err
-func (errorHandler ErrorHandler) Check(err error, data ...interface{}) {
+func (errorHandler ErrorHandler) Check(err error, data ...interface{}) interface{} {
 	if err == nil {
-		return
+		return nil
 	}
 	errType := reflect.TypeOf(err)
 	handler, valid := errorHandler.handlers[errType]
 	if !valid {
 		handler = errorHandler.defaultHandler
 	}
-	handler(err, data)
-	return
+	return handler(err, data)
 }
