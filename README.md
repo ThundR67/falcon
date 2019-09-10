@@ -1,4 +1,4 @@
-[![Go Report Card](https://goreportcard.com/badge/github.com/SonicRoshan/falcon)](https://goreportcard.com/report/github.com/SonicRoshan/falcon)
+[![Go Report Card](https://goreportcard.com/badge/github.com/SonicRoshan/falcon)](https://goreportcard.com/report/github.com/SonicRoshan/falcon) [![GoDoc](https://godoc.org/github.com/SonicRoshan/falcon?status.svg)](https://godoc.org/github.com/SonicRoshan/falcon)
 # Falcon
 Minimal And Efficient Error Handling In Go
 
@@ -20,4 +20,5 @@ errHandler.AddHandler(func(err error, data ...interface{}) interface{} {
 SomeData := errHandler.Check(err, SomeRandomData1, SomeRandomData2)
 //Data passed after the err will be passed to handlers
 ```
+
 
