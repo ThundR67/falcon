@@ -1,4 +1,4 @@
-[![Go Report Card](https://goreportcard.com/badge/github.com/SonicRoshan/falcon)](https://goreportcard.com/report/github.com/SonicRoshan/falcon) [![GoDoc](https://godoc.org/github.com/SonicRoshan/falcon?status.svg)](https://godoc.org/github.com/SonicRoshan/falcon)
+[![Go Report Card](https://goreportcard.com/badge/github.com/SonicRoshan/falcon)](https://goreportcard.com/report/github.com/SonicRoshan/falcon) [![GoDoc](https://godoc.org/github.com/SonicRoshan/falcon?status.svg)](https://godoc.org/github.com/SonicRoshan/falcon) [![GoCover](https://gocover.io/_badge/github.com/SonicRoshan/falcon)](https://gocover.io/github.com/SonicRoshan/falcon)
 # Falcon
 Minimal And Efficient Error Handling In Go
 
