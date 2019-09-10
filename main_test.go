@@ -23,6 +23,8 @@ func TestErrHandler(t *testing.T) {
 
 	assert.NotNil(errHandler)
 	assert.IsType(&ErrorHandler{}, errHandler)
+	assert.NotNil(errHandler.handlers)
+	assert.Nil(errHandler.defaultHandler)
 
 	errHandler.AddHandler(func(err error, data ...interface{}) interface{} {
 		defaultErrOccured = true
@@ -36,6 +38,8 @@ func TestErrHandler(t *testing.T) {
 
 	assert.True(errHandler.Check(errors.New("test"), "test").(bool))
 	assert.True(errHandler.Check(customErr{}).(bool))
+
+	assert.Nil(errHandler.Check(nil))
 
 	assert.True(defaultErrOccured)
 	assert.True(customErrOccured)
