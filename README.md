@@ -18,7 +18,7 @@ errHandler.AddHandler(func(err error, data ...interface{}) interface{} {
 }, CustomErrorType{})
 
 SomeData := errHandler.Check(err, SomeRandomData1, SomeRandomData2)
-//Data passed after the err will be passed to handlers
+// Data passed after the err will be passed to handlers
 ```
 
 
