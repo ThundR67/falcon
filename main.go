@@ -4,25 +4,25 @@ import (
 	"reflect"
 )
 
-//NewErrorHandler returnes new error handler
+// NewErrorHandler returnes new error handler
 func NewErrorHandler() *ErrorHandler {
 	handler := ErrorHandler{}
 	handler.Init()
 	return &handler
 }
 
-//ErrorHandler will error handle
+// ErrorHandler will error handle
 type ErrorHandler struct {
 	handlers       map[reflect.Type]func(error, ...interface{}) interface{}
 	defaultHandler func(error, ...interface{}) interface{}
 }
 
-//Init Initializes
+// Init Initializes
 func (errorHandler *ErrorHandler) Init() {
 	errorHandler.handlers = map[reflect.Type](func(error, ...interface{}) interface{}){}
 }
 
-//AddHandler adds a new error handler
+// AddHandler adds a new error handler
 func (errorHandler *ErrorHandler) AddHandler(handleFunc func(error, ...interface{}) interface{},
 	errTypes ...interface{}) {
 
@@ -34,7 +34,7 @@ func (errorHandler *ErrorHandler) AddHandler(handleFunc func(error, ...interface
 	errorHandler.handlers[errType] = handleFunc
 }
 
-//Check checks err
+// Check checks err
 func (errorHandler ErrorHandler) Check(err error, data ...interface{}) interface{} {
 	if err == nil {
 		return nil
